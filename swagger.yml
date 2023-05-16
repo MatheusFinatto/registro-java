@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: API de Exemplo
+  description: Documentação da API de Exemplo
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Servidor local
+
+paths:
+  /users:
+    get:
+      summary: Obtém a lista de usuários
+      operationId: getAllUsers
+      tags:
+        - Usuários
+      responses:
+        "200":
+          description: Lista de usuários retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+    post:
+      summary: Cria um novo usuário
+      operationId: createUser
+      tags:
+        - Usuários
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "201":
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /users/{id}:
+    get:
+      summary: Obtém um usuário pelo ID
+      operationId: getUserById
+      tags:
+        - Usuários
+      parameters:
+        - name: id
+          in: path
+          description: ID do usuário
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Usuário retornado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    put:
+      summary: Atualiza um usuário existente
+      operationId: updateUser
+      tags:
+        - Usuários
+      parameters:
+        - name: id
+          in: path
+          description: ID do usuário
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    delete:
+      summary: Exclui um usuário existente
+      operationId: deleteUser
+      tags:
+        - Usuários
+      parameters:
+        - name: id
+          in: path
+          description: ID do usuário
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Usuário excluído com sucesso
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
