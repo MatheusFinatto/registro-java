@@ -43,6 +43,7 @@ public class RegisterService {
         } catch (Exception e) {
             throw e;
         } finally {
+            System.out.println("Transação concluída com sucesso");
             entityManager.clear();
             entityManager.close();
         }
