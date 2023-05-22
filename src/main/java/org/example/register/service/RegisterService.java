@@ -33,7 +33,7 @@ public class RegisterService {
         userEntity.setPassword(userRequest.getPassword());
 
         EntityManager entityManager = Persistence
-                .createEntityManagerFactory("jax-rs-sample")
+                .createEntityManagerFactory("users")
                 .createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -51,7 +51,7 @@ public class RegisterService {
 
     public RegisterRequest getUserById(Long id) {
         EntityManager entityManager = Persistence
-                .createEntityManagerFactory("jax-rs-sample")
+                .createEntityManagerFactory("users")
                 .createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -81,7 +81,7 @@ public class RegisterService {
 
     public void updateUser(Long id, RegisterRequest userRequest) {
         EntityManager entityManager = Persistence
-                .createEntityManagerFactory("jax-rs-sample")
+                .createEntityManagerFactory("users")
                 .createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -109,7 +109,7 @@ public class RegisterService {
 
     public void deleteUser(Long id) {
         EntityManager entityManager = Persistence
-                .createEntityManagerFactory("jax-rs-sample")
+                .createEntityManagerFactory("users")
                 .createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -133,7 +133,7 @@ public class RegisterService {
     public List<UserEntity> getAllUsers() {
         List<UserEntity> userList = new ArrayList<>();
         EntityManager entityManager = Persistence
-                .createEntityManagerFactory("jax-rs-sample")
+                .createEntityManagerFactory("users")
                 .createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
